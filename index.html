@@ -102,9 +102,9 @@
 
       <!-- CTA Action -->
       <div class="flex items-center gap-3">
-        <a href="tel:01021021355" class="hidden lg:flex items-center gap-2 text-slate-400 hover:text-white text-xs font-bold pl-2" dir="ltr">
+        <a id="header-phone-link" href="tel:01000000000" class="hidden lg:flex items-center gap-2 text-slate-400 hover:text-white text-xs font-bold pl-2" dir="ltr">
           <i data-lucide="phone-call" class="w-4 h-4 text-gold-400"></i>
-          <span>010 2102 1355</span>
+          <span id="header-phone-display">010 0000 0000</span>
         </a>
 
         <button onclick="openConsultationModal('طلب معاينة هندسية')" class="gold-gradient hover:opacity-90 text-charcoal-950 font-black text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-gold-500/20 transition-all flex items-center gap-2">
@@ -128,7 +128,7 @@
       <a href="#materials" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-1">جدول مقارنة الخامات</a>
       <a href="#faq" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-1">الأسئلة الشائعة</a>
       <div class="pt-2">
-        <a href="https://wa.me/201021021355" target="_blank" class="w-full bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-center flex items-center justify-center gap-2">
+        <a id="mobile-whatsapp-link" href="https://wa.me/201000000000" target="_blank" class="w-full bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-center flex items-center justify-center gap-2">
           <i data-lucide="message-circle" class="w-5 h-5"></i>
           <span>محادثة واتساب مباشرة</span>
         </a>
@@ -641,7 +641,7 @@
       <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
       <span>متاح استشارة هندسية فورية</span>
     </div>
-    <a href="https://wa.me/201021021355?text=مساء%20الخير%20يا%20بشمهندس،%20عايز%20استفسر%20عن%20معاينة%20وتشطيب%20شقة" target="_blank" class="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform relative">
+    <a id="floating-whatsapp-btn" href="https://wa.me/201000000000?text=مساء%20الخير%20يا%20بشمهندس،%20عايز%20استفسر%20عن%20معاينة%20وتشطيب%20شقة" target="_blank" class="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform relative">
       <i data-lucide="message-circle" class="w-8 h-8 fill-white"></i>
       <span class="absolute -top-1 -right-1 bg-gold-500 text-charcoal-950 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-charcoal-950">1</span>
     </a>
@@ -704,12 +704,35 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+      syncPhoneNumbers();
       initCalculatorPackages();
       initCases();
       initPackagesCards();
       calculateCost();
       lucide.createIcons();
     });
+
+    function syncPhoneNumbers() {
+      const rawWa = (cfg.whatsappNumber || "201000000000").replace(/[^0-9]/g, '');
+      const displayPhone = cfg.phoneDisplay || ("0" + rawWa.replace(/^20/, ''));
+
+      const headerLink = document.getElementById("header-phone-link");
+      if (headerLink) {
+        headerLink.href = `tel:${displayPhone}`;
+        const span = document.getElementById("header-phone-display");
+        if (span) span.textContent = displayPhone;
+      }
+
+      const mobileWa = document.getElementById("mobile-whatsapp-link");
+      if (mobileWa) {
+        mobileWa.href = `https://wa.me/${rawWa}`;
+      }
+
+      const floatWa = document.getElementById("floating-whatsapp-btn");
+      if (floatWa) {
+        floatWa.href = `https://wa.me/${rawWa}?text=${encodeURIComponent("مساء الخير يا بشمهندس، عايز استفسر عن معاينة وتشطيب شقة")}`;
+      }
+    }
 
     function toggleMobileMenu() {
       document.getElementById("mobile-menu").classList.toggle("hidden");

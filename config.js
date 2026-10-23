@@ -8,8 +8,8 @@ const DEFAULT_INTERIOR_CONFIG = {
   leadEngineer: "م. إسلام فياض",
   engineerTitle: "استشاري التصميم الداخلي وإدارة المشروعات الهندسية",
   bio: "خبرة أكثر من 12 عاماً في تشطيب الفلل والوحدات السكنية والإدارية بالتجمع الخامس والشيخ زايد والساحل الشمالي. نلتزم بالتسليم في الموعد باليوم وعقد ملزم بغرامة تأخير.",
-  whatsappNumber: "201021021355", // Default WhatsApp phone
-  phoneDisplay: "01021021355",
+  whatsappNumber: "201000000000", // Default Zeroed (Dynamic via Admin Panel)
+  phoneDisplay: "01000000000",   // Default Zeroed (Dynamic via Admin Panel)
   workingHours: "يومياً من 10 صباحاً حتى 9 مساءً (المعاينات بموعد مسبق)",
   adminPin: "decor2026",
 
