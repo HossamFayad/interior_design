@@ -23,10 +23,18 @@
       </div>
       <form onsubmit="handleLogin(event)" class="space-y-4">
         <input type="password" id="pin-input" placeholder="الرمز السري (decor2026)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-center text-lg text-amber-400 font-bold focus:ring-2 focus:ring-amber-500 focus:outline-none">
-        <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black py-3 rounded-xl transition-all shadow-lg">
-          دخول
+        
+        <div id="lockout-msg" class="hidden text-xs text-rose-400 font-bold bg-rose-500/10 p-2.5 rounded-xl border border-rose-500/20">
+          تم قفل الإدخال مؤقتاً لتكرار المحاولات الخاطئة. انتظر <span id="lockout-timer">30</span> ثانية.
+        </div>
+
+        <button type="submit" id="login-btn" class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black py-3 rounded-xl transition-all shadow-lg">
+          تسجيل الدخول
         </button>
       </form>
+      <div class="text-[11px] text-slate-500">
+        الرمز الافتراضي للتجربة: <code class="text-amber-400 font-bold">decor2026</code>
+      </div>
     </div>
   </div>
 
@@ -52,36 +60,36 @@
 
     <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-8 space-y-6">
       <div class="bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
-        <h2 class="text-lg font-black text-white">بيانات الشركة وأسعار المتر</h2>
+        <h2 class="text-lg font-black text-white">بيانات الشركة وأسعار المتر للباقات</h2>
         
         <form onsubmit="handleSave(event)" class="space-y-4">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-bold text-slate-300 mb-1">اسم الشركة:</label>
-              <input type="text" id="cfg-name" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white">
+              <input type="text" id="cfg-name" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:ring-2 focus:ring-amber-500 focus:outline-none">
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-300 mb-1">رقم واتساب المعاينات:</label>
-              <input type="text" id="cfg-whatsapp" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-emerald-400" dir="ltr">
+              <input type="text" id="cfg-whatsapp" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-emerald-400 focus:ring-2 focus:ring-amber-500 focus:outline-none" dir="ltr">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-slate-800 pt-4">
             <div>
               <label class="block text-xs font-bold text-slate-300 mb-1">سعر متر سوبر لوكس (ج):</label>
-              <input type="number" id="pkg-price-0" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-amber-400">
+              <input type="number" id="pkg-price-0" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-amber-400 focus:ring-2 focus:ring-amber-500 focus:outline-none">
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-300 mb-1">سعر متر ألترا لوكس (ج):</label>
-              <input type="number" id="pkg-price-1" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-amber-400">
+              <input type="number" id="pkg-price-1" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-amber-400 focus:ring-2 focus:ring-amber-500 focus:outline-none">
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-300 mb-1">سعر متر VIP الفندقية (ج):</label>
-              <input type="number" id="pkg-price-2" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-amber-400">
+              <input type="number" id="pkg-price-2" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-amber-400 focus:ring-2 focus:ring-amber-500 focus:outline-none">
             </div>
           </div>
 
-          <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black py-3.5 rounded-xl">
+          <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black py-3.5 rounded-xl transition-all shadow-lg hover:opacity-95">
             حفظ التعديلات فوراً
           </button>
         </form>
@@ -91,26 +99,66 @@
 
   <script>
     let currentCfg = window.InteriorConfig;
+    let failedAttempts = 0;
+    let isLockedOut = false;
 
     function handleLogin(e) {
       e.preventDefault();
+      if (isLockedOut) return;
+
       if (document.getElementById("pin-input").value.trim() === currentCfg.adminPin) {
+        failedAttempts = 0;
         document.getElementById("login-screen").classList.add("hidden");
         document.getElementById("admin-dashboard").classList.remove("hidden");
         initDashboard();
       } else {
-        alert("الرمز السري غير صحيح!");
+        failedAttempts++;
+        if (failedAttempts >= 5) {
+          triggerLockout();
+        } else {
+          alert(`الرمز السري غير صحيح! المتبقي: ${5 - failedAttempts} محاولات.`);
+        }
       }
+    }
+
+    function triggerLockout() {
+      isLockedOut = true;
+      let remaining = 30;
+      const lockoutMsg = document.getElementById("lockout-msg");
+      const lockoutTimer = document.getElementById("lockout-timer");
+      const loginBtn = document.getElementById("login-btn");
+      const pinInput = document.getElementById("pin-input");
+
+      lockoutMsg.classList.remove("hidden");
+      loginBtn.disabled = true;
+      loginBtn.classList.add("opacity-50", "cursor-not-allowed");
+      pinInput.disabled = true;
+
+      const interval = setInterval(() => {
+        remaining--;
+        lockoutTimer.textContent = remaining;
+        if (remaining <= 0) {
+          clearInterval(interval);
+          isLockedOut = false;
+          failedAttempts = 0;
+          lockoutMsg.classList.add("hidden");
+          loginBtn.disabled = false;
+          loginBtn.classList.remove("opacity-50", "cursor-not-allowed");
+          pinInput.disabled = false;
+          pinInput.value = "";
+        }
+      }, 1000);
     }
 
     function logout() {
       document.getElementById("admin-dashboard").classList.add("hidden");
       document.getElementById("login-screen").classList.remove("hidden");
+      document.getElementById("pin-input").value = "";
     }
 
     function initDashboard() {
-      document.getElementById("cfg-name").value = currentCfg.companyNameAr;
-      document.getElementById("cfg-whatsapp").value = currentCfg.whatsappNumber;
+      document.getElementById("cfg-name").value = currentCfg.companyNameAr || "";
+      document.getElementById("cfg-whatsapp").value = currentCfg.whatsappNumber || "";
       document.getElementById("pkg-price-0").value = currentCfg.packages[0].pricePerMeter;
       document.getElementById("pkg-price-1").value = currentCfg.packages[1].pricePerMeter;
       document.getElementById("pkg-price-2").value = currentCfg.packages[2].pricePerMeter;
@@ -120,7 +168,7 @@
     function handleSave(e) {
       e.preventDefault();
       currentCfg.companyNameAr = document.getElementById("cfg-name").value.trim();
-      currentCfg.whatsappNumber = document.getElementById("cfg-whatsapp").value.trim();
+      currentCfg.whatsappNumber = document.getElementById("cfg-whatsapp").value.trim().replace(/[^0-9]/g, '');
       currentCfg.packages[0].pricePerMeter = parseInt(document.getElementById("pkg-price-0").value);
       currentCfg.packages[1].pricePerMeter = parseInt(document.getElementById("pkg-price-1").value);
       currentCfg.packages[2].pricePerMeter = parseInt(document.getElementById("pkg-price-2").value);

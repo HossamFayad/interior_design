@@ -88,15 +88,16 @@
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-bold text-slate-300">
+      <nav class="hidden md:flex items-center gap-7 text-sm font-bold text-slate-300">
         <a href="#calculator" class="text-gold-400 hover:text-gold-300 flex items-center gap-1.5 transition-colors">
           <i data-lucide="calculator" class="w-4 h-4"></i>
-          <span>احسب تكلفة تشطيبك</span>
+          <span>حاسبة التكلفة</span>
         </a>
+        <a href="#timeline" class="hover:text-white transition-colors">مراحل التنفيذ</a>
         <a href="#comparison" class="hover:text-white transition-colors">3D مقابل الواقع</a>
-        <a href="#packages" class="hover:text-white transition-colors">باقات التشطيب</a>
-        <a href="#guarantees" class="hover:text-white transition-colors">شروط العقد والضمان</a>
-        <a href="#reviews" class="hover:text-white transition-colors">سابقة الأعمال والعملاء</a>
+        <a href="#materials" class="hover:text-white transition-colors">مقارنة الخامات</a>
+        <a href="#guarantees" class="hover:text-white transition-colors">العقد والضمان</a>
+        <a href="#faq" class="hover:text-white transition-colors">الأسئلة الشائعة</a>
       </nav>
 
       <!-- CTA Action -->
@@ -122,10 +123,10 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-charcoal-900 border-b border-slate-800 p-4 space-y-3">
       <a href="#calculator" onclick="toggleMobileMenu()" class="block text-gold-400 font-bold py-1">حاسبة تكلفة تشطيب شقتك</a>
+      <a href="#timeline" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-1">مراحل العمل والتسليم</a>
       <a href="#comparison" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-1">معرض 3D مقابل الواقع</a>
-      <a href="#packages" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-1">باقات ومواصفات التشطيب</a>
-      <a href="#guarantees" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-1">الضمانات والعقد الملزم</a>
-      <a href="#reviews" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-1">آراء العملاء</a>
+      <a href="#materials" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-1">جدول مقارنة الخامات</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-1">الأسئلة الشائعة</a>
       <div class="pt-2">
         <a href="https://wa.me/201021021355" target="_blank" class="w-full bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-center flex items-center justify-center gap-2">
           <i data-lucide="message-circle" class="w-5 h-5"></i>
@@ -139,15 +140,12 @@
   <!-- Hero Section -->
   <!-- ========================================== -->
   <section class="relative pt-16 pb-24 overflow-hidden border-b border-slate-800">
-    <!-- Ambient Background Glow -->
     <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gold-600/10 rounded-full blur-[140px] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <!-- Left Text (Cols 7) -->
         <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
-          
           <div class="inline-flex items-center gap-2 bg-charcoal-900 border border-gold-500/30 text-gold-400 px-4 py-1.5 rounded-full text-xs font-bold">
             <span class="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
             <span>تشطيبات وتسليم على المفتاح | التجمع الخامس - الشيخ زايد - الساحل</span>
@@ -162,7 +160,6 @@
             نحول وحدتك إلى تحفة معمارية بتصميم 3D دقيق قبل البدء، وعقد هندسي ملزم يحدد يوم التسليم وغرامة تأخير يومية 500 جنيه، مع ضمان 5 سنوات معتمد على كافة بنود التشطيب.
           </p>
 
-          <!-- Badges Grid -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
             <div class="bg-charcoal-900 p-3.5 rounded-2xl border border-slate-800 text-center">
               <div class="text-gold-400 font-black text-xl">100%</div>
@@ -182,7 +179,6 @@
             </div>
           </div>
 
-          <!-- CTAs -->
           <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
             <a href="#calculator" class="w-full sm:w-auto gold-gradient text-charcoal-950 font-black text-sm px-8 py-4 rounded-xl shadow-lg shadow-gold-500/20 hover:opacity-95 transition-all flex items-center justify-center gap-2">
               <i data-lucide="calculator" class="w-5 h-5"></i>
@@ -193,14 +189,11 @@
               <span>تحدث مع مهندس الديكور الآن</span>
             </button>
           </div>
-
         </div>
 
-        <!-- Right Hero Visual (Cols 5) -->
         <div class="lg:col-span-5 relative">
           <div class="relative rounded-3xl overflow-hidden border-2 border-slate-700/80 shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="تشطيب ريسبشن فاخر بالرخام" class="w-full h-[460px] object-cover">
-            
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="تشطيب ريسبشن فاخر" class="w-full h-[460px] object-cover">
             <div class="absolute bottom-4 left-4 right-4 bg-charcoal-950/90 backdrop-blur-md p-4 rounded-2xl border border-slate-800 flex items-center justify-between">
               <div>
                 <h4 class="font-black text-white text-sm">فيلا دي بلاسيو - سوديك ويست</h4>
@@ -218,9 +211,82 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- Interactive Apartment Cost Calculator (The Lead Engine) -->
+  <!-- KILLER FEATURE: 6-Step Execution Timeline -->
   <!-- ========================================== -->
-  <section id="calculator" class="py-20 bg-charcoal-900 border-b border-slate-800">
+  <section id="timeline" class="py-20 bg-charcoal-900 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-gold-400 font-bold text-xs uppercase tracking-wider bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/20">هندسة متقنة</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">رحلة تشطيب وحدتك من الطوب للمفتاح</h2>
+        <p class="text-slate-400 text-sm mt-2">نتبع جدولاً زمنياً صارماً ومدروساً خطوة بخطوة يضمن استلامك في الموعد المحدد دون أي تأخير.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="bg-charcoal-950 p-6 rounded-2xl border border-slate-800 space-y-3 relative overflow-hidden">
+          <span class="text-3xl font-black text-gold-500/30 absolute top-4 left-4">01</span>
+          <div class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center font-bold">
+            <i data-lucide="ruler" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-black text-white">المعاينة ورفع المقاسات ليزر</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">زيارة هندسية مجانية للوحدة ورفع المساحات بدقة ليزر وفحص مسارات السباكة وتوزيع الكهرباء.</p>
+        </div>
+
+        <div class="bg-charcoal-950 p-6 rounded-2xl border border-slate-800 space-y-3 relative overflow-hidden">
+          <span class="text-3xl font-black text-gold-500/30 absolute top-4 left-4">02</span>
+          <div class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center font-bold">
+            <i data-lucide="monitor" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-black text-white">تصميم 3D ماكس والمقايسة</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">رسم وتوزيع كامل للأثاث والفرش والإضاءة ثلاثي الأبعاد لترى وحدتك وتعدلها كما تحب قبل وضع أول مسمار.</p>
+        </div>
+
+        <div class="bg-charcoal-950 p-6 rounded-2xl border border-slate-800 space-y-3 relative overflow-hidden">
+          <span class="text-3xl font-black text-gold-500/30 absolute top-4 left-4">03</span>
+          <div class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center font-bold">
+            <i data-lucide="shield-alert" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-black text-white">تأسيس السباكة والكهرباء والعزل</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">استخدام خامات BR الألمانية وأسلاك السويدي المعتمدة واختبار ضغط المياه مع شهادة ضمان معتمدة.</p>
+        </div>
+
+        <div class="bg-charcoal-950 p-6 rounded-2xl border border-slate-800 space-y-3 relative overflow-hidden">
+          <span class="text-3xl font-black text-gold-500/30 absolute top-4 left-4">04</span>
+          <div class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center font-bold">
+            <i data-lucide="hammer" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-black text-white">المحارة والجبس بورد والأسقف</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">ضبط زوايا وأوتار المحارة بالليزر، وتركيب أسقف جبس بورد كناوف ألماني وبيوت نور مخفية شيك.</p>
+        </div>
+
+        <div class="bg-charcoal-950 p-6 rounded-2xl border border-slate-800 space-y-3 relative overflow-hidden">
+          <span class="text-3xl font-black text-gold-500/30 absolute top-4 left-4">05</span>
+          <div class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center font-bold">
+            <i data-lucide="paint-bucket" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-black text-white">البورسلين والدهانات الديكورية</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">تركيب البورسلين والرخام بميزان ليزر، وتطبيق دهانات جوتن فينوماستيك الناعمة وبانوهات الجدران.</p>
+        </div>
+
+        <div class="bg-charcoal-950 p-6 rounded-2xl border border-gold-500/30 space-y-3 relative overflow-hidden bg-gradient-to-br from-charcoal-950 to-gold-950/20">
+          <span class="text-3xl font-black text-gold-400 absolute top-4 left-4">06</span>
+          <div class="w-10 h-10 rounded-xl gold-gradient text-charcoal-950 flex items-center justify-center font-bold">
+            <i data-lucide="key" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-black text-gold-400">التسليم النهائي على المفتاح</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">تنظيف فندقي شامل واختبار كل مفتاح وإضاءة، وتسليم شهادات الضمان المعتمدة ومفتاح قصرك في يدك.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- Apartment Cost Calculator -->
+  <!-- ========================================== -->
+  <section id="calculator" class="py-20 bg-charcoal-950 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-12">
@@ -235,36 +301,34 @@
         </p>
       </div>
 
-      <div class="max-w-3xl mx-auto bg-charcoal-950 rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl space-y-8">
+      <div class="max-w-3xl mx-auto bg-charcoal-900 rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl space-y-8">
         
-        <!-- Step 1: Unit Type -->
         <div>
           <label class="block text-xs font-black text-slate-400 uppercase tracking-wider mb-3">1. نوع الوحدة:</label>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="unit-type-selector">
-            <button type="button" onclick="setUnitType('شقة سكنية')" class="unit-btn bg-charcoal-900 border border-gold-500 text-gold-400 py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all">
+            <button type="button" onclick="setUnitType('شقة سكنية')" class="unit-btn bg-charcoal-950 border border-gold-500 text-gold-400 py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all">
               <i data-lucide="home" class="w-5 h-5"></i>
               <span>شقة سكنية</span>
             </button>
-            <button type="button" onclick="setUnitType('دوبلكس / بنتهاوس')" class="unit-btn bg-charcoal-900 border border-slate-800 text-slate-400 hover:text-white py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all">
+            <button type="button" onclick="setUnitType('دوبلكس / بنتهاوس')" class="unit-btn bg-charcoal-950 border border-slate-800 text-slate-400 hover:text-white py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all">
               <i data-lucide="layers" class="w-5 h-5"></i>
               <span>دوبلكس / روف</span>
             </button>
-            <button type="button" onclick="setUnitType('فيلا مستقلة / توين')" class="unit-btn bg-charcoal-900 border border-slate-800 text-slate-400 hover:text-white py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all">
+            <button type="button" onclick="setUnitType('فيلا مستقلة / توين')" class="unit-btn bg-charcoal-950 border border-slate-800 text-slate-400 hover:text-white py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all">
               <i data-lucide="castle" class="w-5 h-5"></i>
               <span>فيلا مستقلة</span>
             </button>
-            <button type="button" onclick="setUnitType('مقر إداري / عيادة')" class="unit-btn bg-charcoal-900 border border-slate-800 text-slate-400 hover:text-white py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all">
+            <button type="button" onclick="setUnitType('مقر إداري / عيادة')" class="unit-btn bg-charcoal-950 border border-slate-800 text-slate-400 hover:text-white py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all">
               <i data-lucide="briefcase" class="w-5 h-5"></i>
               <span>مقر إداري / عيادة</span>
             </button>
           </div>
         </div>
 
-        <!-- Step 2: Area Slider -->
         <div>
           <div class="flex justify-between items-center mb-2">
             <label class="text-xs font-black text-slate-400 uppercase tracking-wider">2. المساحة الإجمالية:</label>
-            <span id="area-display" class="text-xl font-black text-gold-400 bg-charcoal-900 px-3 py-1 rounded-lg border border-slate-800">180 م²</span>
+            <span id="area-display" class="text-xl font-black text-gold-400 bg-charcoal-950 px-3 py-1 rounded-lg border border-slate-800">180 م²</span>
           </div>
           <input type="range" id="area-slider" min="70" max="600" step="5" value="180" oninput="updateArea(this.value)" class="w-full accent-gold-500 h-2 bg-slate-800 rounded-lg cursor-pointer">
           <div class="flex justify-between text-[11px] text-slate-500 font-bold mt-1">
@@ -276,17 +340,12 @@
           </div>
         </div>
 
-        <!-- Step 3: Package Select -->
         <div>
           <label class="block text-xs font-black text-slate-400 uppercase tracking-wider mb-3">3. اختر باقة التشطيب:</label>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="package-selector">
-            <!-- Injected via JS -->
-          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="package-selector"></div>
         </div>
 
-        <!-- Calculation Output Box -->
-        <div class="bg-charcoal-900 rounded-2xl p-6 border border-gold-500/30 space-y-6">
-          
+        <div class="bg-charcoal-950 rounded-2xl p-6 border border-gold-500/30 space-y-6">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center border-b border-slate-800 pb-6">
             <div>
               <span class="text-xs text-slate-400 block font-semibold">سعر المتر للباقة:</span>
@@ -302,20 +361,10 @@
             </div>
           </div>
 
-          <!-- Benefits Included -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] text-slate-300">
-            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-400"></i> تصميم 3D مجاني</span>
-            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-400"></i> عقد بغرامة تأخير</span>
-            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-400"></i> تقرير فيديو أسبوعي</span>
-            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-400"></i> ضمان 5 سنوات</span>
-          </div>
-
-          <!-- CTA to WhatsApp -->
           <button onclick="sendFinishingQuoteToWhatsApp()" class="w-full gold-gradient hover:opacity-95 text-charcoal-950 font-black text-sm py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 group">
             <i data-lucide="message-circle" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
             <span>أرسل هذه المقايسة للمهندس واطلب معاينة مجانية على الواتساب</span>
           </button>
-
         </div>
 
       </div>
@@ -326,7 +375,7 @@
   <!-- ========================================== -->
   <!-- 3D vs Reality Slider Showcase -->
   <!-- ========================================== -->
-  <section id="comparison" class="py-20 bg-charcoal-950">
+  <section id="comparison" class="py-20 bg-charcoal-900 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-12">
@@ -341,13 +390,9 @@
         </p>
       </div>
 
-      <!-- Case Tabs -->
-      <div class="flex items-center justify-center gap-3 mb-8 flex-wrap" id="case-tabs-container">
-        <!-- Injected via JS -->
-      </div>
+      <div class="flex items-center justify-center gap-3 mb-8 flex-wrap" id="case-tabs-container"></div>
 
-      <!-- Comparison Frame -->
-      <div class="max-w-4xl mx-auto bg-charcoal-900 rounded-3xl p-4 sm:p-6 border border-slate-800 shadow-2xl">
+      <div class="max-w-4xl mx-auto bg-charcoal-950 rounded-3xl p-4 sm:p-6 border border-slate-800 shadow-2xl">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
           
           <div class="md:col-span-7">
@@ -380,7 +425,7 @@
               تطابق بنسبة 99% بين الموديل الـ 3D وبين الواقع المنفذ بالرخام الإيطالي.
             </p>
 
-            <div class="p-3 bg-charcoal-950 rounded-xl border border-slate-800 space-y-2 text-xs">
+            <div class="p-3 bg-charcoal-900 rounded-xl border border-slate-800 space-y-2 text-xs">
               <div class="flex justify-between text-slate-400">
                 <span>المساحة:</span>
                 <strong class="text-white" id="case-area">340 م²</strong>
@@ -404,20 +449,74 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- Finishing Packages Grid -->
+  <!-- KILLER FEATURE: Materials Comparison Table -->
   <!-- ========================================== -->
-  <section id="packages" class="py-20 bg-charcoal-900 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="materials" class="py-20 bg-charcoal-950 border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
+      <div class="text-center space-y-2 mb-12">
+        <span class="text-xs font-bold text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/20">شفافية تامة</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white">جدول مقارنة الخامات المعتمدة بين الباقات</h2>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-right text-xs sm:text-sm border-collapse bg-charcoal-900 rounded-2xl overflow-hidden border border-slate-800">
+          <thead>
+            <tr class="bg-charcoal-950 text-gold-400 border-b border-slate-800">
+              <th class="p-4 font-black">بند التشطيب</th>
+              <th class="p-4 font-bold">باقة سوبر لوكس (3,800 ج/م)</th>
+              <th class="p-4 font-bold text-gold-400">باقة ألترا لوكس (5,400 ج/م) ⭐</th>
+              <th class="p-4 font-bold">باقة VIP الفندقية (7,800 ج/م)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/80 text-slate-300">
+            <tr>
+              <td class="p-4 font-bold text-white">تأسيس السباكة</td>
+              <td class="p-4">أنابيب BR ألماني معتمدة</td>
+              <td class="p-4 text-gold-300 font-semibold">BR ألماني + عزل كيميائي سيروبلاست</td>
+              <td class="p-4">ألماني متكامل + شاور دفن معلق جروهي</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white">تأسيس الكهرباء</td>
+              <td class="p-4">أسلاك السويدي معتمدة 100%</td>
+              <td class="p-4 text-gold-300 font-semibold">السويدي + تجهيز Smart Home وتكييف كونسيلد</td>
+              <td class="p-4">نظام ذكي متكامل Smart Home بالتحكم الصوتي</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white">الأرضيات للريسبشن</td>
+              <td class="p-4">سيراميك فرز أول كليوباترا</td>
+              <td class="p-4 text-gold-300 font-semibold">بورسلين إسباني / هندي مستورد فاخر</td>
+              <td class="p-4">رخام إيطالي طبيعي (كرارا / ستاتشواريو)</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white">الأسقف المعلقة</td>
+              <td class="p-4">مصيص ناعم مع كرانيش فيوتك</td>
+              <td class="p-4 text-gold-300 font-semibold">جبس بورد كناوف ألماني وبيوت نور ليد</td>
+              <td class="p-4">جبس بورد دبل + ماجنتيك تراك لايت وسماعات</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white">الدهانات النهائية</td>
+              <td class="p-4">جوتن فينوماستيك ناعمة (3 أوجه)</td>
+              <td class="p-4 text-gold-300 font-semibold">جوتن قطيفة + دهان ترافيرتينو ديكوري</td>
+              <td class="p-4">بديل خشب ورخام + ورق حائط إيطالي فاخر</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- Finishing Packages Cards Grid -->
+  <!-- ========================================== -->
+  <section id="packages" class="py-20 bg-charcoal-900 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
         <h2 class="text-3xl sm:text-4xl font-black text-white">باقات ومواصفات التشطيب المتكاملة</h2>
         <p class="text-slate-400 text-sm mt-2">خامات أصلية 100% مع شهادات ضمان معتمدة من كبرى الشركات</p>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="packages-cards-container">
-        <!-- Injected via JS -->
-      </div>
-
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="packages-cards-container"></div>
     </div>
   </section>
 
@@ -426,7 +525,6 @@
   <!-- ========================================== -->
   <section id="guarantees" class="py-20 bg-charcoal-950">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
       <div class="bg-gradient-to-br from-charcoal-900 to-charcoal-950 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
         <div class="max-w-3xl mx-auto text-center space-y-4 mb-10">
           <span class="text-gold-400 font-extrabold text-xs uppercase tracking-wider">الأمان وراحة البال</span>
@@ -466,25 +564,51 @@
             <p class="text-xs text-slate-400 leading-relaxed">فيديو تفصيلي كل خميس يرسل على واتساب العميل يوضح ما تم إنجازه خطوة بخطوة بالصوت والصورة.</p>
           </div>
         </div>
-
       </div>
-
     </div>
   </section>
 
   <!-- ========================================== -->
-  <!-- Client Testimonials -->
+  <!-- FAQ Accordion -->
   <!-- ========================================== -->
-  <section id="reviews" class="py-20 bg-charcoal-900 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="faq" class="py-20 bg-charcoal-900 border-t border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-2xl sm:text-3xl font-black text-white">تجارب واقعية لعملاء وثقوا بنا</h2>
-        <p class="text-slate-400 text-sm mt-2">تسليمات في كبرى كمبوندات التجمع الخامس وأكتوبر والشيخ زايد</p>
+      <div class="text-center space-y-2 mb-12">
+        <span class="text-xs font-bold text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/20">إجابات هندسية</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white">الأسئلة الأكثر شيوعاً قبل توقيع العقد</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="reviews-container">
-        <!-- Injected via JS -->
+      <div class="space-y-3">
+        <div class="border border-slate-800 rounded-2xl overflow-hidden bg-charcoal-950">
+          <button onclick="toggleFaq(1)" class="w-full p-4 text-right font-black text-sm sm:text-base text-white flex justify-between items-center hover:bg-slate-900 transition-colors">
+            <span>هل من الممكن حدوث زيادة في الأسعار بعد توقيع العقد وبدء التشطيب؟</span>
+            <i id="faq-icon-1" data-lucide="chevron-down" class="w-5 h-5 text-gold-400 transition-transform"></i>
+          </button>
+          <div id="faq-body-1" class="hidden px-4 pb-4 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800 pt-3">
+            لا يمكن ذلك نهائياً. بمجرد توقيع العقد الهندسي واعتماد المقايسة التفصيلية، تصبح الأسعار ثابتة وملزمة لشركتنا حتى لو ارتفعت أسعار السوق، ونحن نتحمل أي فروق أسعار بالكامل.
+          </div>
+        </div>
+
+        <div class="border border-slate-800 rounded-2xl overflow-hidden bg-charcoal-950">
+          <button onclick="toggleFaq(2)" class="w-full p-4 text-right font-black text-sm sm:text-base text-white flex justify-between items-center hover:bg-slate-900 transition-colors">
+            <span>كيف يتم تطبيق غرامة التأخير اليومية الـ 500 جنيه؟</span>
+            <i id="faq-icon-2" data-lucide="chevron-down" class="w-5 h-5 text-gold-400 transition-transform"></i>
+          </button>
+          <div id="faq-body-2" class="hidden px-4 pb-4 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800 pt-3">
+            يحدد العقد تاريخاً نهائياً ودقيقاً لتسليم الوحدة على المفتاح. في حال حدوث أي تأخير عن هذا اليوم لسبب يخص الشركة، يتم خصم 500 جنيه تلقائياً عن كل يوم تأخير من الدفعة الأخيرة للتسليم.
+          </div>
+        </div>
+
+        <div class="border border-slate-800 rounded-2xl overflow-hidden bg-charcoal-950">
+          <button onclick="toggleFaq(3)" class="w-full p-4 text-right font-black text-sm sm:text-base text-white flex justify-between items-center hover:bg-slate-900 transition-colors">
+            <span>ما هو نظام الدفعات ومراحل السداد؟</span>
+            <i id="faq-icon-3" data-lucide="chevron-down" class="w-5 h-5 text-gold-400 transition-transform"></i>
+          </button>
+          <div id="faq-body-3" class="hidden px-4 pb-4 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800 pt-3">
+            يتم السداد على دفعات مرحلية مرتبطة بنسب الإنجاز على أرض الواقع (دفعة مقدمة للبدء، دفعة بعد استلام السباكة والكهرباء، دفعة بعد المحارة والأرضيات، ودفعة نهائية عند التسليم واستلام المفتاح).
+          </div>
+        </div>
       </div>
 
     </div>
@@ -502,6 +626,7 @@
       <div class="flex items-center gap-4">
         <a href="#calculator" class="hover:text-gold-400">حاسبة التشطيب</a>
         <a href="#comparison" class="hover:text-gold-400">سابقة الأعمال</a>
+        <a href="#faq" class="hover:text-gold-400">الأسئلة الشائعة</a>
         <a href="/admin" class="hover:text-gold-400">لوحة تحكم الشركة</a>
       </div>
       <div>
@@ -510,27 +635,24 @@
     </div>
   </footer>
 
-  <!-- ========================================== -->
-  <!-- Floating WhatsApp Action Button -->
-  <!-- ========================================== -->
+  <!-- Floating WhatsApp -->
   <div class="fixed bottom-6 left-6 z-50 flex items-center gap-3">
+    <div class="hidden sm:flex bg-charcoal-900 px-3.5 py-1.5 rounded-full shadow-lg border border-slate-700 text-xs font-bold text-slate-300 items-center gap-1.5 animate-bounce">
+      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+      <span>متاح استشارة هندسية فورية</span>
+    </div>
     <a href="https://wa.me/201021021355?text=مساء%20الخير%20يا%20بشمهندس،%20عايز%20استفسر%20عن%20معاينة%20وتشطيب%20شقة" target="_blank" class="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform relative">
       <i data-lucide="message-circle" class="w-8 h-8 fill-white"></i>
-      <span class="absolute -top-1 -right-1 bg-gold-500 text-charcoal-950 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-charcoal-950">
-        1
-      </span>
+      <span class="absolute -top-1 -right-1 bg-gold-500 text-charcoal-950 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-charcoal-950">1</span>
     </a>
   </div>
 
-  <!-- ========================================== -->
   <!-- Consultation Modal -->
-  <!-- ========================================== -->
   <div id="consultation-modal" class="fixed inset-0 z-50 bg-charcoal-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-charcoal-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-slate-800 shadow-2xl text-right relative">
       <button onclick="closeConsultationModal()" class="absolute top-5 left-5 text-slate-400 hover:text-white bg-slate-800 p-2 rounded-full">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
-
       <div class="flex items-center gap-3 mb-4">
         <div class="w-10 h-10 rounded-xl gold-gradient text-charcoal-950 flex items-center justify-center font-bold">
           <i data-lucide="ruler" class="w-6 h-6"></i>
@@ -540,7 +662,6 @@
           <p class="text-xs text-slate-400">سيتم تحويل طلبك مباشرة للمهندس المشرف على الواتساب</p>
         </div>
       </div>
-
       <form onsubmit="handleConsultationSubmit(event)" class="space-y-4">
         <div>
           <label class="block text-xs font-bold text-slate-300 mb-1">الاسم الكريم:</label>
@@ -572,14 +693,20 @@
   <script>
     const cfg = window.InteriorConfig;
     let selectedUnit = "شقة سكنية";
-    let selectedPkgIndex = 1; // Default to Ultra Lux
+    let selectedPkgIndex = 1;
     let currentCaseIndex = 0;
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
 
     document.addEventListener("DOMContentLoaded", () => {
       initCalculatorPackages();
       initCases();
       initPackagesCards();
-      initReviews();
       calculateCost();
       lucide.createIcons();
     });
@@ -588,15 +715,18 @@
       document.getElementById("mobile-menu").classList.toggle("hidden");
     }
 
-    // 1. Calculator Logic
+    function toggleFaq(id) {
+      const body = document.getElementById(`faq-body-${id}`);
+      const icon = document.getElementById(`faq-icon-${id}`);
+      const isHidden = body.classList.contains("hidden");
+      body.classList.toggle("hidden");
+      icon.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
+    }
+
     function setUnitType(type) {
       selectedUnit = type;
       document.querySelectorAll(".unit-btn").forEach(btn => {
-        if (btn.textContent.includes(type)) {
-          btn.className = "unit-btn bg-charcoal-900 border border-gold-500 text-gold-400 py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all";
-        } else {
-          btn.className = "unit-btn bg-charcoal-900 border border-slate-800 text-slate-400 hover:text-white py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all";
-        }
+        btn.className = btn.textContent.includes(type) ? "unit-btn bg-charcoal-950 border border-gold-500 text-gold-400 py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all" : "unit-btn bg-charcoal-950 border border-slate-800 text-slate-400 hover:text-white py-3 rounded-xl font-bold text-xs flex flex-col items-center gap-1.5 transition-all";
       });
       calculateCost();
     }
@@ -609,8 +739,8 @@
     function initCalculatorPackages() {
       const container = document.getElementById("package-selector");
       container.innerHTML = cfg.packages.map((pkg, idx) => `
-        <button type="button" onclick="selectPkg(${idx})" id="pkg-btn-${idx}" class="p-3.5 rounded-xl text-right border transition-all ${idx === selectedPkgIndex ? 'bg-charcoal-900 border-gold-500 text-white' : 'bg-charcoal-950 border-slate-800 text-slate-400 hover:border-slate-700'}">
-          <div class="text-xs font-black">${pkg.name}</div>
+        <button type="button" onclick="selectPkg(${idx})" id="pkg-btn-${idx}" class="p-3.5 rounded-xl text-right border transition-all ${idx === selectedPkgIndex ? 'bg-charcoal-950 border-gold-500 text-white' : 'bg-charcoal-950 border-slate-800 text-slate-400 hover:border-slate-700'}">
+          <div class="text-xs font-black">${escapeHtml(pkg.name)}</div>
           <div class="text-[11px] text-gold-400 font-bold mt-1">${pkg.pricePerMeter.toLocaleString()} ج / م²</div>
         </button>
       `).join('');
@@ -619,11 +749,7 @@
     function selectPkg(idx) {
       selectedPkgIndex = idx;
       document.querySelectorAll("[id^='pkg-btn-']").forEach((btn, i) => {
-        if (i === idx) {
-          btn.className = "p-3.5 rounded-xl text-right border transition-all bg-charcoal-900 border-gold-500 text-white";
-        } else {
-          btn.className = "p-3.5 rounded-xl text-right border transition-all bg-charcoal-950 border-slate-800 text-slate-400 hover:border-slate-700";
-        }
+        btn.className = i === idx ? "p-3.5 rounded-xl text-right border transition-all bg-charcoal-950 border-gold-500 text-white" : "p-3.5 rounded-xl text-right border transition-all bg-charcoal-950 border-slate-800 text-slate-400 hover:border-slate-700";
       });
       calculateCost();
     }
@@ -633,8 +759,6 @@
       const pkg = cfg.packages[selectedPkgIndex];
       const meterPrice = pkg.pricePerMeter;
       const total = area * meterPrice;
-
-      // Estimate duration: base 45 days + 1 day per 10m²
       const durationDays = 45 + Math.round(area / 10);
 
       document.getElementById("res-meter-price").textContent = `${meterPrice.toLocaleString()} ج / م²`;
@@ -649,20 +773,17 @@
       const days = document.getElementById("res-duration").textContent;
 
       const msg = `مساء الخير يا بشمهندس، حسبت تكلفة تشطيب وحدتي من الموقع:\n- نوع الوحدة: ${selectedUnit}\n- المساحة: ${area} م²\n- الباقة: ${pkg.name}\n- التكلفة التقديرية: ${total}\n- مدة التنفيذ: ${days}\n\nحبيت أستفسر عن موعد لمعاينة الوحدة على الطبيعة وعمل المقايسة والتصميم 3D. شكراً لحضرتك!`;
-
       const url = `https://wa.me/${cfg.whatsappNumber}?text=${encodeURIComponent(msg)}`;
       window.open(url, "_blank");
     }
 
-    // 2. 3D vs Reality Cases
     function initCases() {
       const container = document.getElementById("case-tabs-container");
       container.innerHTML = cfg.portfolioCases.map((c, idx) => `
-        <button onclick="renderCase(${idx})" id="case-tab-${idx}" class="px-4 py-2 rounded-xl text-xs font-bold border transition-all ${idx === 0 ? 'bg-gold-500 text-charcoal-950 border-gold-500' : 'bg-charcoal-900 text-slate-300 border-slate-800 hover:border-slate-700'}">
-          ${c.title}
+        <button onclick="renderCase(${idx})" id="case-tab-${idx}" class="px-4 py-2 rounded-xl text-xs font-bold border transition-all ${idx === 0 ? 'bg-gold-500 text-charcoal-950 border-gold-500' : 'bg-charcoal-950 text-slate-300 border-slate-800 hover:border-slate-700'}">
+          ${escapeHtml(c.title)}
         </button>
       `).join('');
-
       renderCase(0);
       setupSlider();
     }
@@ -671,11 +792,7 @@
       currentCaseIndex = idx;
       const c = cfg.portfolioCases[idx];
       document.querySelectorAll("[id^='case-tab-']").forEach((tab, i) => {
-        if (i === idx) {
-          tab.className = "px-4 py-2 rounded-xl text-xs font-bold border transition-all bg-gold-500 text-charcoal-950 border-gold-500";
-        } else {
-          tab.className = "px-4 py-2 rounded-xl text-xs font-bold border transition-all bg-charcoal-900 text-slate-300 border-slate-800 hover:border-slate-700";
-        }
+        tab.className = i === idx ? "px-4 py-2 rounded-xl text-xs font-bold border transition-all bg-gold-500 text-charcoal-950 border-gold-500" : "px-4 py-2 rounded-xl text-xs font-bold border transition-all bg-charcoal-950 text-slate-300 border-slate-800 hover:border-slate-700";
       });
 
       document.getElementById("case-render-img").src = c.render3dImg;
@@ -704,51 +821,31 @@
       box.addEventListener("mousedown", (e) => { dragging = true; update(e.clientX); });
       window.addEventListener("mouseup", () => dragging = false);
       window.addEventListener("mousemove", (e) => { if (dragging) update(e.clientX); });
-
       box.addEventListener("touchstart", (e) => { dragging = true; update(e.touches[0].clientX); });
       window.addEventListener("touchend", () => dragging = false);
       window.addEventListener("touchmove", (e) => { if (dragging) update(e.touches[0].clientX); });
     }
 
-    // 3. Packages Cards
     function initPackagesCards() {
       const container = document.getElementById("packages-cards-container");
       container.innerHTML = cfg.packages.map(p => `
         <div class="bg-charcoal-950 rounded-2xl p-6 border ${p.popular ? 'border-gold-500 shadow-xl shadow-gold-500/10' : 'border-slate-800'} flex flex-col justify-between relative">
           ${p.popular ? `<span class="absolute -top-3 right-6 bg-gold-500 text-charcoal-950 text-[10px] font-black px-3 py-0.5 rounded-full uppercase">الأكثر طلباً للفلل</span>` : ''}
           <div>
-            <h3 class="text-xl font-black text-white mb-1">${p.name}</h3>
+            <h3 class="text-xl font-black text-white mb-1">${escapeHtml(p.name)}</h3>
             <div class="text-2xl font-black text-gold-400 mb-3">${p.pricePerMeter.toLocaleString()} ج <span class="text-xs text-slate-500 font-bold">/ للمتر المربع</span></div>
-            <p class="text-slate-400 text-xs mb-6">${p.shortDesc}</p>
+            <p class="text-slate-400 text-xs mb-6">${escapeHtml(p.shortDesc)}</p>
             <ul class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800 pt-4">
-              ${p.features.map(f => `<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-400 shrink-0"></i><span>${f}</span></li>`).join('')}
+              ${p.features.map(f => `<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-400 shrink-0"></i><span>${escapeHtml(f)}</span></li>`).join('')}
             </ul>
           </div>
-          <button onclick="openConsultationModal('استفسار عن ' + '${p.name}')" class="mt-8 w-full bg-charcoal-900 hover:bg-gold-500 hover:text-charcoal-950 text-white font-bold py-3 rounded-xl transition-all text-xs">
+          <button onclick="openConsultationModal('استفسار عن ' + '${escapeHtml(p.name)}')" class="mt-8 w-full bg-charcoal-900 hover:bg-gold-500 hover:text-charcoal-950 text-white font-bold py-3 rounded-xl transition-all text-xs">
             طلب تفاصيل ومقايسة الباقة
           </button>
         </div>
       `).join('');
     }
 
-    // 4. Reviews
-    function initReviews() {
-      const container = document.getElementById("reviews-container");
-      container.innerHTML = cfg.reviews.map(r => `
-        <div class="bg-charcoal-950 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
-          <div>
-            <div class="text-amber-400 mb-2">${'★'.repeat(r.rating)}</div>
-            <p class="text-slate-300 text-xs leading-relaxed mb-4">"${r.comment}"</p>
-          </div>
-          <div class="border-t border-slate-800 pt-3 flex justify-between items-center text-xs">
-            <strong class="text-white">${r.clientName}</strong>
-            <span class="text-gold-400">${r.project}</span>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    // 5. Modal Logic
     function openConsultationModal(title = "") {
       document.getElementById("consultation-modal").classList.remove("hidden");
     }
@@ -757,10 +854,10 @@
     }
     function handleConsultationSubmit(e) {
       e.preventDefault();
-      const name = document.getElementById("modal-name").value;
-      const phone = document.getElementById("modal-phone").value;
-      const loc = document.getElementById("modal-loc").value || "غير محدد";
-      const area = document.getElementById("modal-area").value || "غير محدد";
+      const name = document.getElementById("modal-name").value.trim();
+      const phone = document.getElementById("modal-phone").value.trim();
+      const loc = document.getElementById("modal-loc").value.trim() || "غير محدد";
+      const area = document.getElementById("modal-area").value.trim() || "غير محدد";
 
       const text = `مرحباً شركة آرتيزان للتصميم والتشطيبات، أرغب في حجز موعد معاينة ومقايسة:\n- الاسم: ${name}\n- الهاتف: ${phone}\n- الموقع: ${loc}\n- المساحة: ${area}\n\nيرجى التواصل لتحديد الموعد.`;
       const url = `https://wa.me/${cfg.whatsappNumber}?text=${encodeURIComponent(text)}`;
