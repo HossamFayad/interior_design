@@ -1,5 +1,5 @@
 // ==========================================
-// Artisan Interior Design & Finishing - Configuration
+// Artisan Interior Design & Finishing - Configuration & Declarative Engine
 // ==========================================
 
 const DEFAULT_INTERIOR_CONFIG = {
@@ -127,27 +127,169 @@ const DEFAULT_INTERIOR_CONFIG = {
   ]
 };
 
-function getInteriorConfig() {
-  try {
-    const saved = localStorage.getItem("artisan_interior_config");
-    if (saved) return JSON.parse(saved);
-  } catch (e) {}
-  return DEFAULT_INTERIOR_CONFIG;
-}
+// ==========================================
+// Universal Declarative Config Engine
+// ==========================================
+class ConfigEngine {
+  constructor(storageKey, defaults) {
+    this.storageKey = storageKey;
+    this.defaults = defaults;
+    this.data = this.load();
+  }
 
-function saveInteriorConfig(cfg) {
-  try {
-    localStorage.setItem("artisan_interior_config", JSON.stringify(cfg));
+  load() {
+    try {
+      const saved = localStorage.getItem(this.storageKey);
+      if (saved) return this.deepMerge(this.defaults, JSON.parse(saved));
+    } catch (e) {
+      console.error("ConfigEngine load error:", e);
+    }
+    return JSON.parse(JSON.stringify(this.defaults));
+  }
+
+  save(partial) {
+    this.data = this.deepMerge(this.data, partial);
+    try {
+      localStorage.setItem(this.storageKey, JSON.stringify(this.data));
+      this.apply();
+      return true;
+    } catch (e) {
+      console.error("ConfigEngine save error:", e);
+      return false;
+    }
+  }
+
+  reset() {
+    localStorage.removeItem(this.storageKey);
+    this.data = JSON.parse(JSON.stringify(this.defaults));
+    this.apply();
     return true;
-  } catch (e) {
-    return false;
+  }
+
+  deepMerge(target, source) {
+    const output = Object.assign({}, target);
+    if (this.isObject(target) && this.isObject(source)) {
+      Object.keys(source).forEach(key => {
+        if (this.isObject(source[key])) {
+          if (!(key in target)) Object.assign(output, { [key]: source[key] });
+          else output[key] = this.deepMerge(target[key], source[key]);
+        } else {
+          Object.assign(output, { [key]: source[key] });
+        }
+      });
+    }
+    return output;
+  }
+
+  isObject(item) {
+    return item && typeof item === 'object' && !Array.isArray(item);
+  }
+
+  getCleanWhatsApp() {
+    return (this.data.whatsappNumber || "201000000000").replace(/[^0-9]/g, '');
+  }
+
+  getDisplayPhone() {
+    return this.data.phoneDisplay || ("0" + this.getCleanWhatsApp().replace(/^20/, ''));
+  }
+
+  getWhatsAppUrl(customMessage = "") {
+    const wa = this.getCleanWhatsApp();
+    return customMessage 
+      ? `https://wa.me/${wa}?text=${encodeURIComponent(customMessage)}`
+      : `https://wa.me/${wa}`;
+  }
+
+  // Declarative DOM Applier
+  apply() {
+    const cleanWa = this.getCleanWhatsApp();
+    const phone = this.getDisplayPhone();
+
+    // 1. Phone Links: [data-bind-phone]
+    document.querySelectorAll("[data-bind-phone]").forEach(el => {
+      el.setAttribute("href", `tel:${phone}`);
+    });
+
+    // 2. Phone Display Text: [data-bind-phone-display]
+    document.querySelectorAll("[data-bind-phone-display]").forEach(el => {
+      el.textContent = phone;
+    });
+
+    // 3. WhatsApp Links: [data-bind-whatsapp]
+    document.querySelectorAll("[data-bind-whatsapp]").forEach(el => {
+      const msg = el.getAttribute("data-whatsapp-msg") || "";
+      el.setAttribute("href", this.getWhatsAppUrl(msg));
+    });
+
+    // 4. Text Bindings: [data-bind-text]
+    document.querySelectorAll("[data-bind-text]").forEach(el => {
+      const path = el.getAttribute("data-bind-text");
+      const val = this.getByPath(this.data, path);
+      if (val !== undefined && val !== null) {
+        el.textContent = val;
+      }
+    });
+  }
+
+  // Form Binding for Admin: auto-populates [data-config-field="..."]
+  populateForm(formSelector) {
+    const form = typeof formSelector === 'string' ? document.querySelector(formSelector) : formSelector;
+    if (!form) return;
+    form.querySelectorAll("[data-config-field]").forEach(input => {
+      const path = input.getAttribute("data-config-field");
+      const val = this.getByPath(this.data, path);
+      if (val === undefined || val === null) return;
+      if (input.type === 'checkbox') {
+        input.checked = !!val;
+      } else {
+        input.value = val;
+      }
+    });
+  }
+
+  // Form Extractor for Admin: extracts values from [data-config-field="..."]
+  extractFormData(formSelector) {
+    const form = typeof formSelector === 'string' ? document.querySelector(formSelector) : formSelector;
+    if (!form) return {};
+    const result = {};
+    form.querySelectorAll("[data-config-field]").forEach(input => {
+      const path = input.getAttribute("data-config-field");
+      let val;
+      if (input.type === 'checkbox') {
+        val = input.checked;
+      } else if (input.type === 'number') {
+        val = Number(input.value);
+      } else {
+        val = input.value.trim();
+        if (path === 'whatsappNumber') {
+          val = val.replace(/[^0-9]/g, '');
+        }
+      }
+      this.setByPath(result, path, val);
+    });
+    return result;
+  }
+
+  getByPath(obj, path) {
+    return path.split('.').reduce((acc, part) => (acc && acc[part] !== undefined ? acc[part] : undefined), obj);
+  }
+
+  setByPath(obj, path, value) {
+    const parts = path.split('.');
+    let current = obj;
+    for (let i = 0; i < parts.length - 1; i++) {
+      if (!current[parts[i]]) current[parts[i]] = {};
+      current = current[parts[i]];
+    }
+    current[parts[parts.length - 1]] = value;
   }
 }
 
-window.InteriorConfig = getInteriorConfig();
-window.saveInteriorConfig = saveInteriorConfig;
-window.resetInteriorConfig = function() {
-  localStorage.removeItem("artisan_interior_config");
-  window.InteriorConfig = DEFAULT_INTERIOR_CONFIG;
-  return true;
-};
+// Global Singleton Instance
+window.AppConfig = new ConfigEngine("artisan_interior_config", DEFAULT_INTERIOR_CONFIG);
+window.InteriorConfig = window.AppConfig.data;
+
+// Compatibility aliases
+function getInteriorConfig() { return window.AppConfig.data; }
+function saveInteriorConfig(cfg) { return window.AppConfig.save(cfg); }
+function resetInteriorConfig() { return window.AppConfig.reset(); }
